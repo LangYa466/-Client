@@ -17,9 +17,7 @@ public class ToggleSprint extends Module {
 
     @EventTarget
     private void onMotion(MotionEvent event) {
-        if (event.getEventType() == EventType.POST || mc.thePlayer.movementInput.moveForward <= 0) return;
-
-        mc.thePlayer.setSprinting(true);
+        mc.gameSettings.keyBindSprint.pressed = true;
     }
 
     @Override
