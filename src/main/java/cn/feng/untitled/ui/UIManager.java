@@ -11,6 +11,9 @@ import cn.feng.untitled.ui.clickgui2.ClickGui;
 import cn.feng.untitled.ui.screen.main.FlatMainScreen;
 import cn.feng.untitled.ui.widget.Widget;
 import cn.feng.untitled.ui.widget.impl.ArraylistWidget;
+import cn.feng.untitled.ui.widget.impl.BPSWidget;
+import cn.feng.untitled.ui.widget.impl.FPSWidget;
+import cn.feng.untitled.ui.widget.impl.TimeWidget;
 import cn.feng.untitled.util.MinecraftInstance;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -33,6 +36,9 @@ public class UIManager extends MinecraftInstance {
 
     public void registerWidgets() {
         register(new ArraylistWidget());
+        register(new BPSWidget());
+        register(new FPSWidget());
+        register(new TimeWidget());
     }
 
     public Widget getWidget(Class<? extends Widget> w) {
@@ -49,7 +55,6 @@ public class UIManager extends MinecraftInstance {
     }
 
     public void initGUI() {
-        clickGUI = new ClickGui();
         mainScreen = new FlatMainScreen();
 
         Client.instance.eventBus.register(clickGUI);

@@ -3,7 +3,6 @@ package cn.feng.untitled.ui.widget;
 import cn.feng.untitled.event.impl.ShaderEvent;
 import cn.feng.untitled.ui.font.awt.AWTFontLoader;
 import cn.feng.untitled.util.MinecraftInstance;
-import cn.feng.untitled.util.misc.ChatUtil;
 import cn.feng.untitled.util.render.ColorUtil;
 import cn.feng.untitled.util.render.RenderUtil;
 import cn.feng.untitled.util.render.RoundedUtil;
