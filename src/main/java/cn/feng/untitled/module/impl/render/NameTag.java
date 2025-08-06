@@ -1,6 +1,6 @@
 package cn.feng.untitled.module.impl.render;
 
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.NameTagEvent;
 import cn.feng.untitled.event.impl.NanoEvent;
 import cn.feng.untitled.event.impl.Render3DEvent;
@@ -45,12 +45,12 @@ public class NameTag extends Module {
         super("NameTag", ModuleCategory.Render);
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onNameTag(NameTagEvent e) {
         e.cancel();
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onNano(NanoEvent e) {
         RenderUtil.scaleStart(0, 0, 2);
         for (Entity entity : entityPosition.keySet()) {
@@ -131,7 +131,7 @@ public class NameTag extends Module {
         RenderUtil.scaleEnd();
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onRender3D(Render3DEvent e) {
         entityPosition.clear();
         for (final Entity entity : mc.theWorld.loadedEntityList) {

@@ -2,8 +2,8 @@ package cn.feng.untitled.event;
 
 import cn.feng.untitled.event.api.Event;
 import cn.feng.untitled.event.api.EventData;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.api.PseudoSubscriber;
-import cn.feng.untitled.event.api.SubscribeEvent;
 import cn.feng.untitled.event.type.EventPriority;
 import cn.feng.untitled.event.type.SubscriberDepth;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class EventBus {
     private final Map<Class<? extends Event>, List<EventData>> registry = new HashMap<>();
 
     private boolean isBadMethod(Method method) {
-        return method.getParameterTypes().length != 1 || !method.isAnnotationPresent(SubscribeEvent.class);
+        return method.getParameterTypes().length != 1 || !method.isAnnotationPresent(EventTarget.class);
     }
 
     private void sortList(Class<? extends Event> clazz) {
@@ -38,7 +38,7 @@ public class EventBus {
     }
 
     private void register(Class<? extends Event> event, Method method, Object instance) {
-        EventData data = new EventData(instance, method, method.getAnnotation(SubscribeEvent.class).priority());
+        EventData data = new EventData(instance, method, method.getAnnotation(EventTarget.class).priority());
         data.target.setAccessible(true);
         if (registry.containsKey(event)) {
             if (!registry.get(event).contains(data)) {

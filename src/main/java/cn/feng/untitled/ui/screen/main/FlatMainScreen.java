@@ -125,7 +125,7 @@ public class FlatMainScreen extends GuiScreen {
         NanoUtil.beginFrame();
 
         NanoFontLoader.rubik.bold().drawGlowString("Hello Minecraft", 30f, 20f, 40f, Color.WHITE);
-        NanoFontLoader.greyCliff.bold().drawGlowString("--- Untitled client, an experimental project", 35f, 50f, 18f, Color.GRAY);
+        NanoFontLoader.greyCliff.bold().drawGlowString("--- untitled client, an experimental project", 35f, 50f, 18f, Color.GRAY);
 
         float buttonX = 30f;
         float buttonY = scaledHeight * 0.3f;
@@ -146,7 +146,7 @@ public class FlatMainScreen extends GuiScreen {
 
         NanoFontLoader.rubik.bold().drawGlowString("OPTIFINE", scaledWidth - 30f, 30f, 28f, NanoVG.NVG_ALIGN_RIGHT, textColor);
         Gui.drawNewRect(width - 170f, 50f, 150f, 0.5f, textColor.getRGB());
-        NanoFontLoader.greyCliff.bold().drawString("Hello#Untitled", width - 165f, 52f, 20f, textColor);
+        NanoFontLoader.greyCliff.bold().drawString("Hello#untitled", width - 165f, 52f, 20f, textColor);
 
         LocalDate today = LocalDate.now();
 

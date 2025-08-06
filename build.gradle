@@ -1,19 +1,18 @@
 plugins {
     id("java")
-    id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 project.ext.lwjglVersion = "3.3.4"
 project.ext.lwjglNatives = "natives-windows"
 
-group = "cn.feng"
+group = "cn.langya"
 version = "1.0-SNAPSHOT"
 
 shadowJar {
     archiveClassifier.set('all')
 
-    configurations = [project.configurations.runtimeClasspath] // 包含所有 runtimeClasspath 依赖，包括 JavaFX
+    configurations = [project.configurations.runtimeClasspath]
 }
 
 tasks.build {
@@ -39,13 +38,6 @@ repositories {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-}
-
-javafx {
-    modules = [ 'javafx.controls', 'javafx.media', 'javafx.base', 'javafx.graphics', 'javafx.swing' ]
-    version = '22'
-    platform = 'windows'
-    configurations = [ 'implementation', 'testImplementation' ]
 }
 
 dependencies {

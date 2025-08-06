@@ -1,7 +1,7 @@
 package cn.feng.untitled.command;
 
 import cn.feng.untitled.command.impl.HelpCommand;
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.ChatEvent;
 import cn.feng.untitled.event.type.PacketType;
 import cn.feng.untitled.util.misc.ChatUtil;
@@ -29,7 +29,7 @@ public class CommandManager {
         commandList.add(command);
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onChat(ChatEvent event) {
         if (event.getPacketType() == PacketType.RECEIVE || !event.text.startsWith(prefix)) return;
         String text = event.text.substring(1);

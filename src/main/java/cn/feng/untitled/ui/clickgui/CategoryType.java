@@ -3,7 +3,6 @@ package cn.feng.untitled.ui.clickgui;
 import cn.feng.untitled.module.ModuleCategory;
 
 public enum CategoryType {
-    Attack,
     Visual,
     Misc,
     Setting;
@@ -16,10 +15,6 @@ public enum CategoryType {
 
             case Render, Widget -> {
                 return Visual;
-            }
-
-            case Rage, Legit -> {
-                return Attack;
             }
 
             default -> {

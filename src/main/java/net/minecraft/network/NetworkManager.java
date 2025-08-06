@@ -124,8 +124,6 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet> {
                     final UserConnection user = new UserConnectionImpl(p_initChannel_1_, true);
                     new ProtocolPipelineImpl(user);
 
-                    Client.instance.networkManager.userConnection = user;
-
                     p_initChannel_1_.pipeline().addLast(new MCPVLBPipeline(user));
                 }
             }

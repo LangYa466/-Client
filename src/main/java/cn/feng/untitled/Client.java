@@ -4,8 +4,6 @@ import cn.feng.untitled.command.CommandManager;
 import cn.feng.untitled.config.ConfigManager;
 import cn.feng.untitled.event.EventBus;
 import cn.feng.untitled.module.ModuleManager;
-import cn.feng.untitled.music.MusicManager;
-import cn.feng.untitled.network.NetworkManager;
 import cn.feng.untitled.ui.UIManager;
 import cn.feng.untitled.ui.font.awt.AWTFontLoader;
 import cn.feng.untitled.util.misc.Logger;
@@ -18,14 +16,12 @@ import org.lwjgl.opengl.Display;
 public enum Client {
     instance;
 
-    public final String CLIENT_NAME = "Untitled";
+    public final String CLIENT_NAME = "Liora";
     public EventBus eventBus;
     public ModuleManager moduleManager;
     public CommandManager commandManager;
     public UIManager uiManager;
-    public NetworkManager networkManager;
     public ConfigManager configManager;
-    public MusicManager musicManager;
 
     public boolean loaded = false;
 
@@ -37,7 +33,7 @@ public enum Client {
             ViaMCP.create();
             ViaMCP.INSTANCE.initAsyncSlider(); // For top left aligned slider
         } catch (Exception e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
 
         EntityCulling.instance.onInitialize();
@@ -47,9 +43,7 @@ public enum Client {
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
         uiManager = new UIManager();
-        networkManager = new NetworkManager();
         configManager = new ConfigManager();
-        musicManager = new MusicManager();
 
         Logger.info("Loading fonts...");
         AWTFontLoader.registerFonts();
@@ -58,7 +52,6 @@ public enum Client {
         eventBus.register(moduleManager);
         eventBus.register(commandManager);
         eventBus.register(uiManager);
-        eventBus.register(musicManager);
         moduleManager.registerModules();
         commandManager.registerCommands();
         configManager.registerConfigs();
@@ -67,7 +60,6 @@ public enum Client {
         Logger.info("Miscellaneous...");
         configManager.loadConfigs();
         uiManager.initGUI();
-        musicManager.initGUI();
         Keyboard.enableRepeatEvents(false);
 
         Display.setTitle(CLIENT_NAME + " | LWJGL Version " + Sys.getVersion());

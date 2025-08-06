@@ -1,6 +1,6 @@
 package cn.feng.untitled.module.impl.movement;
 
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.MotionEvent;
 import cn.feng.untitled.event.type.EventType;
 import cn.feng.untitled.module.Module;
@@ -15,7 +15,7 @@ public class ToggleSprint extends Module {
         super("ToggleSprint", ModuleCategory.Movement, true);
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onMotion(MotionEvent event) {
         if (event.getEventType() == EventType.POST || mc.thePlayer.movementInput.moveForward <= 0) return;
 

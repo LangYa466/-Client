@@ -22,7 +22,7 @@ public class Animations extends Module {
 
     public static final BoolValue leftHand = new BoolValue("LeftHand", false);
     public static final BoolValue itemAnim = new BoolValue("ItemAnimation", true);
-    public static final BoolValue everythingBlock = new BoolValue("EverythingBlock", true);
+    public static final BoolValue everythingBlock = new BoolValue("EverythingBlock", false);
     public static final BoolValue oldSneak = new BoolValue("OldSneak", true);
     public static final BoolValue oldBow = new BoolValue("OldBow", true);
 }

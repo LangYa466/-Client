@@ -1,7 +1,7 @@
 package cn.feng.untitled.module;
 
 import cn.feng.untitled.Client;
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.KeyEvent;
 import cn.feng.untitled.module.impl.client.*;
 import cn.feng.untitled.module.impl.movement.ToggleSprint;
@@ -17,6 +17,7 @@ import cn.feng.untitled.value.Value;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ChengFeng
@@ -86,7 +87,6 @@ public class ModuleManager {
         register(new NameTag());
         register(new Camera());
         register(new EntityCullingMod());
-        register(new MusicPlayerMod());
         register(new Animations());
     }
 
@@ -99,7 +99,8 @@ public class ModuleManager {
     }
 
     public List<Module> getModuleByCategory(ModuleCategory category) {
-        List<Module> list = new ArrayList<>(moduleList.stream().filter(it -> it.category == category).toList());
+        List<Module> list = moduleList.stream()
+                .filter(it -> it.category == category).collect(Collectors.toList());
         if (!list.isEmpty()) {
             list.sort(new ModuleComparator(CompareMode.Alphabet, (AWTFont) null));
         }
@@ -114,7 +115,7 @@ public class ModuleManager {
         throw new ModuleNotFoundException(widget.name);
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onKey(KeyEvent event) {
         moduleList.stream().filter(module -> module.key == event.key).forEach(Module::toggle);
     }

@@ -54,7 +54,7 @@ public class ToggleSprint extends Module {
 
 ```java
 import cn.feng.untitled.Client;
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.UpdateEvent;
 
 public class YourClass {

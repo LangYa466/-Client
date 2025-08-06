@@ -10,7 +10,7 @@ public class PseudoSubscriber<T extends Event> {
         this.processor = processor;
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onEvent(T event) {
         processor.accept(event);
     }

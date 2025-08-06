@@ -140,15 +140,15 @@ public class ClickGUI extends GuiScreen {
         float centerX = x + leftWidth / 2f;
         if (PostProcessing.bloom.getValue()) {
             BlurUtil.processStart();
-            font.drawCenteredString("UNTITLED", centerX + 0.5f, y + 13.5f, ThemeColor.focusedColor.getRGB(), CenterType.Horizontal);
-            font.drawCenteredString("UNTITLED", centerX, y + 13f, Color.WHITE.getRGB(), CenterType.Horizontal);
+            font.drawCenteredString("Liora", centerX + 0.5f, y + 13.5f, ThemeColor.focusedColor.getRGB(), CenterType.Horizontal);
+            font.drawCenteredString("Liora", centerX, y + 13f, Color.WHITE.getRGB(), CenterType.Horizontal);
             BlurUtil.bloomEnd();
         }
-        font.drawCenteredString("UNTITLED", centerX + 0.5f, y + 13.5f, ThemeColor.focusedColor.getRGB(), CenterType.Horizontal);
-        font.drawCenteredString("UNTITLED", centerX, y + 13f, Color.WHITE.getRGB(), CenterType.Horizontal);
+        font.drawCenteredString("Liora", centerX + 0.5f, y + 13.5f, ThemeColor.focusedColor.getRGB(), CenterType.Horizontal);
+        font.drawCenteredString("Liora", centerX, y + 13f, Color.WHITE.getRGB(), CenterType.Horizontal);
 
         // Category
-        float categoryX = centerX - font.getStringWidth("UNTITLED") / 2f - 3f;
+        float categoryX = centerX - font.getStringWidth("Liora") - 3f;
         float categoryY = y + font.getFontHeight() + 50f;
 
         if (PostProcessing.bloom.getValue()) {

@@ -34,6 +34,13 @@ public class ColorAnimation extends ComposedAnimation<Color> {
         this.alphaAnim = new CustomAnimation(SmoothStepAnimation.class, duration, startColor.getAlpha(), endColor.getAlpha());
     }
 
+    public void change(Color newColor) {
+        if (endColor.equals(newColor)) return;
+        setStartColor(getOutput());
+        setEndColor(newColor);
+        reset();
+    }
+
     public void setStartColor(Color startColor) {
         this.startColor = startColor;
         redAnim.setStartPoint(this.startColor.getRed());
@@ -73,6 +80,13 @@ public class ColorAnimation extends ComposedAnimation<Color> {
         greenAnim.changeDirection();
         blueAnim.changeDirection();
         alphaAnim.changeDirection();
+    }
+
+    public void reset() {
+        redAnim.getAnimation().reset();
+        greenAnim.getAnimation().reset();
+        blueAnim.getAnimation().reset();
+        alphaAnim.getAnimation().reset();
     }
 
     public Direction getDirection() {

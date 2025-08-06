@@ -1,19 +1,16 @@
 package cn.feng.untitled.ui;
 
 import cn.feng.untitled.Client;
-import cn.feng.untitled.event.api.SubscribeEvent;
+import cn.feng.untitled.event.api.EventTarget;
 import cn.feng.untitled.event.impl.ChatGUIEvent;
 import cn.feng.untitled.event.impl.NanoEvent;
-import cn.feng.untitled.event.impl.Render2DEvent;
 import cn.feng.untitled.event.impl.ShaderEvent;
 import cn.feng.untitled.event.type.EventPriority;
 import cn.feng.untitled.ui.clickgui.ClickGUI;
+import cn.feng.untitled.ui.clickgui2.ClickGui;
 import cn.feng.untitled.ui.screen.main.FlatMainScreen;
 import cn.feng.untitled.ui.widget.Widget;
 import cn.feng.untitled.ui.widget.impl.ArraylistWidget;
-import cn.feng.untitled.ui.widget.impl.MusicInfoWidget;
-import cn.feng.untitled.ui.widget.impl.MusicLyricWidget;
-import cn.feng.untitled.ui.widget.impl.MusicVisualizerWidget;
 import cn.feng.untitled.util.MinecraftInstance;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -36,9 +33,6 @@ public class UIManager extends MinecraftInstance {
 
     public void registerWidgets() {
         register(new ArraylistWidget());
-        register(new MusicInfoWidget());
-        register(new MusicLyricWidget());
-        register(new MusicVisualizerWidget());
     }
 
     public Widget getWidget(Class<? extends Widget> w) {
@@ -55,13 +49,13 @@ public class UIManager extends MinecraftInstance {
     }
 
     public void initGUI() {
-        clickGUI = new ClickGUI();
+        clickGUI = new ClickGui();
         mainScreen = new FlatMainScreen();
 
         Client.instance.eventBus.register(clickGUI);
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @EventTarget(priority = EventPriority.HIGHEST)
     private void onNano(NanoEvent event) {
         for (Widget widget : widgetList) {
             if (Client.instance.moduleManager.getModule(widget).enabled) {
@@ -71,7 +65,7 @@ public class UIManager extends MinecraftInstance {
         }
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onShader(ShaderEvent event) {
         for (Widget widget : widgetList) {
             if (Client.instance.moduleManager.getModule(widget).enabled) {
@@ -80,7 +74,7 @@ public class UIManager extends MinecraftInstance {
         }
     }
 
-    @SubscribeEvent
+    @EventTarget
     private void onChatGUI(ChatGUIEvent event) {
         Widget draggingWidget = null;
         for (Widget widget : widgetList) {

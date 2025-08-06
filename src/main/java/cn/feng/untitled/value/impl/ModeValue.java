@@ -10,7 +10,7 @@ import cn.feng.untitled.value.Value;
 public class ModeValue extends Value<String> {
     public String[] values;
 
-    public ModeValue(String name, String defaultValue, String[] values) {
+    public ModeValue(String name, String defaultValue, String... values) {
         super(name, defaultValue);
         this.values = values;
     }
