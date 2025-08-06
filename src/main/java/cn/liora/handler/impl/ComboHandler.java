@@ -21,6 +21,11 @@ public class ComboHandler {
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.hurtTime > 0) combo = 0;
         if (lastTarget != null && lastTarget.getDistanceToEntity(mc.thePlayer) >= 8) combo = 0;
+        if (mc.theWorld != null && mc.thePlayer != null) {
+            if (!mc.inGameHasFocus) return;
+
+            mc.leftClickCounter = 0;
+        }
     }
 
     @EventTarget
