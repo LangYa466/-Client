@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import cn.feng.untitled.Client;
-import cn.feng.untitled.event.impl.NameTagEvent;
+import cn.liora.Client;
+import cn.liora.event.impl.NameTagEvent;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;

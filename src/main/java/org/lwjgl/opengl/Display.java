@@ -1,10 +1,10 @@
 package org.lwjgl.opengl;
 
-import cn.feng.untitled.Client;
-import cn.feng.untitled.event.impl.NanoEvent;
-import cn.feng.untitled.ui.font.nano.NanoFontLoader;
-import cn.feng.untitled.util.render.nano.NanoLoader;
-import cn.feng.untitled.util.render.nano.NanoUtil;
+import cn.liora.Client;
+import cn.liora.event.impl.NanoEvent;
+import cn.liora.ui.font.nano.NanoFontLoader;
+import cn.liora.util.render.nano.NanoLoader;
+import cn.liora.util.render.nano.NanoUtil;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;

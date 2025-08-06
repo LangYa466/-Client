@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import cn.feng.untitled.module.impl.render.Animations;
-import cn.feng.untitled.util.misc.ChatUtil;
+import cn.liora.module.impl.render.Animations;
+import cn.liora.util.misc.ChatUtil;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelPlayer;

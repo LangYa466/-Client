@@ -3,7 +3,7 @@ package dev.tr7zw.entityculling;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import cn.feng.untitled.module.impl.client.EntityCullingMod;
+import cn.liora.module.impl.client.EntityCullingMod;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.logisticscraft.occlusionculling.OcclusionCullingInstance;

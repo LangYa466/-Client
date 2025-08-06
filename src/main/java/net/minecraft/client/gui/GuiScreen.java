@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import cn.feng.untitled.Client;
-import cn.feng.untitled.event.impl.ChatEvent;
+import cn.liora.Client;
+import cn.liora.event.impl.ChatEvent;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;

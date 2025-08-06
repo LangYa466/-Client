@@ -1,0 +1,44 @@
+package cn.liora.ui.clickgui.component.impl;
+
+import cn.liora.ui.clickgui.ThemeColor;
+import cn.liora.ui.clickgui.component.Component;
+import cn.liora.ui.clickgui.gui.TextField;
+import cn.liora.ui.font.awt.AWTFontLoader;
+import cn.liora.value.impl.StringValue;
+
+/**
+ * @author ChengFeng
+ * @since 2024/8/1
+ **/
+public class StringComponent extends Component<String> {
+    private final TextField textField;
+
+    public StringComponent(StringValue value) {
+        super(value);
+
+        width = 65f;
+        height = 13f;
+
+        textField = new TextField(width, height, AWTFontLoader.miSans(16), ThemeColor.barColor, ThemeColor.outlineColor);
+        textField.text = value.getValue();
+    }
+
+    @Override
+    public void draw(float x, float y, int mouseX, int mouseY) {
+        this.posX = x + panelWidth - width - xGap * 2;
+        this.posY = y - 4.0F;
+
+        textField.draw(this.posX, this.posY, mouseX, mouseY);
+    }
+    
+    @Override
+    public void onKeyTyped(char c, int keyCode) {
+        textField.keyTyped(c, keyCode);
+        value.setValue(textField.text);
+    }
+
+    @Override
+    public void onMouseClick(int mouseX, int mouseY, int button) {
+        textField.mouseClicked(mouseX, mouseY, button);
+    }
+}

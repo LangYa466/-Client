@@ -1,6 +1,6 @@
 package net.minecraft.client.gui;
 
-import cn.feng.untitled.Client;
+import cn.liora.Client;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.resources.I18n;

@@ -1,6 +1,6 @@
 package dev.tr7zw.entityculling;
 
-import cn.feng.untitled.module.impl.client.EntityCullingMod;
+import cn.liora.module.impl.client.EntityCullingMod;
 import com.logisticscraft.occlusionculling.OcclusionCullingInstance;
 import com.logisticscraft.occlusionculling.util.Vec3d;
 import dev.tr7zw.entityculling.access.Cullable;

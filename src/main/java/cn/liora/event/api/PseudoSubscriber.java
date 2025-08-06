@@ -1,0 +1,18 @@
+package cn.liora.event.api;
+
+import java.util.function.Consumer;
+
+public class PseudoSubscriber<T extends Event> {
+
+    private final Consumer<T> processor;
+
+    public PseudoSubscriber(Consumer<T> processor) {
+        this.processor = processor;
+    }
+
+    @EventTarget
+    private void onEvent(T event) {
+        processor.accept(event);
+    }
+
+}

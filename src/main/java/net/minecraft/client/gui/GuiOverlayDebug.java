@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import cn.feng.untitled.Client;
-import cn.feng.untitled.module.impl.client.EntityCullingMod;
+import cn.liora.Client;
+import cn.liora.module.impl.client.EntityCullingMod;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import dev.tr7zw.entityculling.EntityCulling;

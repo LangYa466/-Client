@@ -1,6 +1,6 @@
 package net.minecraft.client.model;
 
-import cn.feng.untitled.module.impl.render.Animations;
+import cn.liora.module.impl.render.Animations;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
