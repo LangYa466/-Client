@@ -22,7 +22,7 @@ public class TimeWidget extends Widget {
     private final NumberValue fontSize = new NumberValue("FontSize", 16f, 30f, 16f, 0.5f);
     private final ColorValue textColor = new ColorValue("TextColor", Color.WHITE);
     private final ColorValue backgroundColor = new ColorValue("BackgroundColor", new Color(0, 0, 0, 120));
-    private final NumberValue roundedRectRadius = new NumberValue("RoundedRect Radius", 2f, 10f, 4f, 0.5f);
+    private final NumberValue roundedRectRadius = new NumberValue("RoundedRect Radius", 2f, 10f, 0f, 0.5f);
     private final NumberValue padding = new NumberValue("Padding", 4f, 12f, 4f, 0.5f);
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
