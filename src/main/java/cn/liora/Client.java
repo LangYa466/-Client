@@ -3,6 +3,7 @@ package cn.liora;
 import cn.liora.command.CommandManager;
 import cn.liora.config.ConfigManager;
 import cn.liora.event.EventBus;
+import cn.liora.handler.HandlerManager;
 import cn.liora.module.ModuleManager;
 import cn.liora.ui.UIManager;
 import cn.liora.ui.font.awt.AWTFontLoader;
@@ -22,6 +23,7 @@ public enum Client {
     public CommandManager commandManager;
     public UIManager uiManager;
     public ConfigManager configManager;
+    public HandlerManager handlerManager;
 
     public boolean loaded = false;
 
@@ -44,6 +46,7 @@ public enum Client {
         commandManager = new CommandManager();
         uiManager = new UIManager();
         configManager = new ConfigManager();
+        handlerManager = new HandlerManager();
 
         Logger.info("Loading fonts...");
         AWTFontLoader.registerFonts();

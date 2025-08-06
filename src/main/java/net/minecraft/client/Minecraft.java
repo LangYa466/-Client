@@ -3,6 +3,7 @@ package net.minecraft.client;
 import cn.liora.Client;
 import cn.liora.event.impl.KeyEvent;
 import cn.liora.event.impl.TickEvent;
+import cn.liora.event.impl.WorldLoadEvent;
 import cn.liora.ui.font.nano.NanoFontLoader;
 import cn.liora.util.render.nano.NanoUtil;
 import cn.liora.ui.screen.SplashScreen;
@@ -1957,6 +1958,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * par2Str is displayed on the loading screen to the user unloads the current world first
      */
     public void loadWorld(WorldClient worldClientIn, String loadingMessage) {
+        WorldLoadEvent worldLoadEvent = new WorldLoadEvent();
+        Client.instance.eventBus.post(worldLoadEvent);
+
         if (worldClientIn == null) {
             NetHandlerPlayClient nethandlerplayclient = this.getNetHandler();
 

@@ -1,5 +1,7 @@
 package net.minecraft.client.multiplayer;
 
+import cn.liora.Client;
+import cn.liora.event.impl.AttackEvent;
 import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -405,6 +407,9 @@ public class PlayerControllerMP {
      * Attacks an entity
      */
     public void attackEntity(EntityPlayer playerIn, Entity targetEntity) {
+        AttackEvent attackEvent = new AttackEvent(targetEntity);
+        Client.instance.eventBus.post(attackEvent);
+
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new C02PacketUseEntity(targetEntity, C02PacketUseEntity.Action.ATTACK));
 

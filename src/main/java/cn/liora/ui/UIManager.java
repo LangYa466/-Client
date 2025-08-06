@@ -10,10 +10,7 @@ import cn.liora.ui.clickgui.ClickGUI;
 import cn.liora.ui.clickgui2.ClickGui;
 import cn.liora.ui.screen.main.FlatMainScreen;
 import cn.liora.ui.widget.Widget;
-import cn.liora.ui.widget.impl.ArraylistWidget;
-import cn.liora.ui.widget.impl.BPSWidget;
-import cn.liora.ui.widget.impl.FPSWidget;
-import cn.liora.ui.widget.impl.TimeWidget;
+import cn.liora.ui.widget.impl.*;
 import cn.liora.util.MinecraftInstance;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -39,6 +36,7 @@ public class UIManager extends MinecraftInstance {
         register(new BPSWidget());
         register(new FPSWidget());
         register(new TimeWidget());
+        register(new ComboWidget());
     }
 
     public Widget getWidget(Class<? extends Widget> w) {
