@@ -620,9 +620,9 @@ public class Display {
         return null;
     }
 
-    private static class Window {
+    public static class Window {
 
-        static long handle;
+        public static long handle;
 
         static GLFWKeyCallback keyCallback;
         static GLFWCharCallback charCallback;

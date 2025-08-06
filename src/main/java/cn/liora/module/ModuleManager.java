@@ -89,6 +89,7 @@ public class ModuleManager {
         register(new EntityCullingMod());
         register(new Animations());
         register(new MotionBlur());
+        register(new RawInputMod());
     }
 
     public Module getModule(Class<? extends Module> klass) {
