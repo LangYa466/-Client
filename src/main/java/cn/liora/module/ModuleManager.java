@@ -88,6 +88,7 @@ public class ModuleManager {
         register(new Camera());
         register(new EntityCullingMod());
         register(new Animations());
+        register(new MotionBlur());
     }
 
     public Module getModule(Class<? extends Module> klass) {
