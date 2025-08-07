@@ -38,6 +38,7 @@ public class UIManager extends MinecraftInstance {
         register(new TimeWidget());
         register(new ComboWidget());
         register(new KeystrokeWidget());
+        register(new PingWidget());
     }
 
     public Widget getWidget(Class<? extends Widget> w) {
