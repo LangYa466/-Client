@@ -53,7 +53,7 @@ public class ShaderGroup {
         try {
             IResource iresource = this.resourceManager.getResource(p_152765_2_);
             inputstream = iresource.getInputStream();
-            JsonObject jsonobject = JsonParser.parseString(IOUtils.toString(inputstream, StandardCharsets.UTF_8)).getAsJsonObject();
+            JsonObject jsonobject = new JsonParser().parseString(IOUtils.toString(inputstream, StandardCharsets.UTF_8)).getAsJsonObject();
 
             if (JsonUtils.isJsonArray(jsonobject, "targets")) {
                 JsonArray jsonarray = jsonobject.getAsJsonArray("targets");

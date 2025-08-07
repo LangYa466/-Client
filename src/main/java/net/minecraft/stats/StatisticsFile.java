@@ -115,7 +115,7 @@ public class StatisticsFile extends StatFileWriter {
     }
 
     public Map<StatBase, TupleIntJsonSerializable> parseJson(String p_150881_1_) {
-        JsonElement jsonelement = JsonParser.parseString(p_150881_1_);
+        JsonElement jsonelement = new JsonParser().parseString(p_150881_1_);
 
         if (!jsonelement.isJsonObject()) {
             return Maps.newHashMap();

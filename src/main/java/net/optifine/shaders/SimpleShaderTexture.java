@@ -47,7 +47,7 @@ public class SimpleShaderTexture extends AbstractTexture {
             TextureMetadataSection texturemetadatasection1;
 
             try {
-                JsonObject jsonobject = JsonParser.parseReader(bufferedreader).getAsJsonObject();
+                JsonObject jsonobject = new JsonParser().parse(bufferedreader).getAsJsonObject();
                 TextureMetadataSection texturemetadatasection = imetadataserializer.parseMetadataSection(s1, jsonobject);
 
                 if (texturemetadatasection == null) {

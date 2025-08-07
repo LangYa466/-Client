@@ -1,6 +1,7 @@
 package net.minecraft.client.resources;
 
 import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Getter;
@@ -56,7 +57,7 @@ public class SimpleResource implements IResource {
 
                 try {
                     bufferedreader = new BufferedReader(new InputStreamReader(this.mcmetaInputStream));
-                    this.mcmetaJson = JsonParser.parseReader(bufferedreader).getAsJsonObject();
+                    this.mcmetaJson = new JsonParser().parse(bufferedreader).getAsJsonObject();
                 } finally {
                     IOUtils.closeQuietly(bufferedreader);
                 }

@@ -58,7 +58,7 @@ public class ShaderManager {
 
         try {
             inputstream = resourceManager.getResource(resourcelocation).getInputStream();
-            JsonObject jsonobject = JsonParser.parseString(IOUtils.toString(inputstream, StandardCharsets.UTF_8)).getAsJsonObject();
+            JsonObject jsonobject = new JsonParser().parseString(IOUtils.toString(inputstream, StandardCharsets.UTF_8)).getAsJsonObject();
             String s = JsonUtils.getString(jsonobject, "vertex");
             String s1 = JsonUtils.getString(jsonobject, "fragment");
             JsonArray jsonarray = JsonUtils.getJsonArray(jsonobject, "samplers", null);

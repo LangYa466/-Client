@@ -214,7 +214,7 @@ public class CustomEntityModelParser {
         } else {
             String s = Config.readInputStream(inputstream, "ASCII");
             inputstream.close();
-            JsonObject jsonobject = JsonParser.parseString(s).getAsJsonObject();
+            JsonObject jsonobject = new JsonParser().parseString(s).getAsJsonObject();
             return jsonobject;
         }
     }
