@@ -13,7 +13,7 @@ public class Gui {
     public static final ResourceLocation optionsBackground = new ResourceLocation("textures/gui/options_background.png");
     public static final ResourceLocation statIcons = new ResourceLocation("textures/gui/container/stats_icons.png");
     public static final ResourceLocation icons = new ResourceLocation("textures/gui/icons.png");
-    protected float zLevel;
+    protected static float zLevel;
 
     public static void drawNewRect(double x, double y, double width, double height, int color) {
         RenderUtil.resetColor();
@@ -142,10 +142,10 @@ public class Gui {
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        worldrenderer.pos(right, top, this.zLevel).color(f1, f2, f3, f).endVertex();
-        worldrenderer.pos(left, top, this.zLevel).color(f1, f2, f3, f).endVertex();
-        worldrenderer.pos(left, bottom, this.zLevel).color(f5, f6, f7, f4).endVertex();
-        worldrenderer.pos(right, bottom, this.zLevel).color(f5, f6, f7, f4).endVertex();
+        worldrenderer.pos(right, top, zLevel).color(f1, f2, f3, f).endVertex();
+        worldrenderer.pos(left, top, zLevel).color(f1, f2, f3, f).endVertex();
+        worldrenderer.pos(left, bottom, zLevel).color(f5, f6, f7, f4).endVertex();
+        worldrenderer.pos(right, bottom, zLevel).color(f5, f6, f7, f4).endVertex();
         tessellator.draw();
         GlStateManager.shadeModel(7424);
         GlStateManager.disableBlend();
@@ -170,16 +170,36 @@ public class Gui {
     /**
      * Draws a textured rectangle at the stored z-value. Args: x, y, u, v, width, height
      */
-    public void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height) {
+    public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height) {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos(x, y + height, this.zLevel).tex((float) (textureX) * f, (float) (textureY + height) * f1).endVertex();
-        worldrenderer.pos(x + width, y + height, this.zLevel).tex((float) (textureX + width) * f, (float) (textureY + height) * f1).endVertex();
-        worldrenderer.pos(x + width, y, this.zLevel).tex((float) (textureX + width) * f, (float) (textureY) * f1).endVertex();
-        worldrenderer.pos(x, y, this.zLevel).tex((float) (textureX) * f, (float) (textureY) * f1).endVertex();
+        worldrenderer.pos(x, y + height, Gui.zLevel).tex((float) (textureX) * f, (float) (textureY + height) * f1).endVertex();
+        worldrenderer.pos(x + width, y + height, Gui.zLevel).tex((float) (textureX + width) * f, (float) (textureY + height) * f1).endVertex();
+        worldrenderer.pos(x + width, y, Gui.zLevel).tex((float) (textureX + width) * f, (float) (textureY) * f1).endVertex();
+        worldrenderer.pos(x, y, Gui.zLevel).tex((float) (textureX) * f, (float) (textureY) * f1).endVertex();
+        tessellator.draw();
+    }
+
+    static final float TEX_WIDTH = 256f;
+    static final float TEX_HEIGHT = 256f;
+
+    public static void drawTexturedModalRect2(float x, float y, int textureX, int textureY, int width, int height) {
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+
+        float texX1 = textureX / TEX_WIDTH;
+        float texY1 = textureY / TEX_HEIGHT;
+        float texX2 = (textureX + width) / TEX_WIDTH;
+        float texY2 = (textureY + height) / TEX_HEIGHT;
+
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(x, y + height, zLevel).tex(texX1, texY2).endVertex();
+        worldrenderer.pos(x + width, y + height, zLevel).tex(texX2, texY2).endVertex();
+        worldrenderer.pos(x + width, y, zLevel).tex(texX2, texY1).endVertex();
+        worldrenderer.pos(x, y, zLevel).tex(texX1, texY1).endVertex();
         tessellator.draw();
     }
 
@@ -192,10 +212,10 @@ public class Gui {
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos(xCoord + 0.0F, yCoord + (float) maxV, this.zLevel).tex((float) (minU) * f, (float) (minV + maxV) * f1).endVertex();
-        worldrenderer.pos(xCoord + (float) maxU, yCoord + (float) maxV, this.zLevel).tex((float) (minU + maxU) * f, (float) (minV + maxV) * f1).endVertex();
-        worldrenderer.pos(xCoord + (float) maxU, yCoord + 0.0F, this.zLevel).tex((float) (minU + maxU) * f, (float) (minV) * f1).endVertex();
-        worldrenderer.pos(xCoord + 0.0F, yCoord + 0.0F, this.zLevel).tex((float) (minU) * f, (float) (minV) * f1).endVertex();
+        worldrenderer.pos(xCoord + 0.0F, yCoord + (float) maxV, zLevel).tex((float) (minU) * f, (float) (minV + maxV) * f1).endVertex();
+        worldrenderer.pos(xCoord + (float) maxU, yCoord + (float) maxV, zLevel).tex((float) (minU + maxU) * f, (float) (minV + maxV) * f1).endVertex();
+        worldrenderer.pos(xCoord + (float) maxU, yCoord + 0.0F, zLevel).tex((float) (minU + maxU) * f, (float) (minV) * f1).endVertex();
+        worldrenderer.pos(xCoord + 0.0F, yCoord + 0.0F, zLevel).tex((float) (minU) * f, (float) (minV) * f1).endVertex();
         tessellator.draw();
     }
 
@@ -206,10 +226,10 @@ public class Gui {
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos(xCoord, yCoord + heightIn, this.zLevel).tex(textureSprite.getMinU(), textureSprite.getMaxV()).endVertex();
-        worldrenderer.pos(xCoord + widthIn, yCoord + heightIn, this.zLevel).tex(textureSprite.getMaxU(), textureSprite.getMaxV()).endVertex();
-        worldrenderer.pos(xCoord + widthIn, yCoord, this.zLevel).tex(textureSprite.getMaxU(), textureSprite.getMinV()).endVertex();
-        worldrenderer.pos(xCoord, yCoord, this.zLevel).tex(textureSprite.getMinU(), textureSprite.getMinV()).endVertex();
+        worldrenderer.pos(xCoord, yCoord + heightIn, zLevel).tex(textureSprite.getMinU(), textureSprite.getMaxV()).endVertex();
+        worldrenderer.pos(xCoord + widthIn, yCoord + heightIn, zLevel).tex(textureSprite.getMaxU(), textureSprite.getMaxV()).endVertex();
+        worldrenderer.pos(xCoord + widthIn, yCoord, zLevel).tex(textureSprite.getMaxU(), textureSprite.getMinV()).endVertex();
+        worldrenderer.pos(xCoord, yCoord, zLevel).tex(textureSprite.getMinU(), textureSprite.getMinV()).endVertex();
         tessellator.draw();
     }
 }

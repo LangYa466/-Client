@@ -12,6 +12,7 @@ import cn.liora.ui.screen.main.FlatMainScreen;
 import cn.liora.ui.widget.Widget;
 import cn.liora.ui.widget.impl.*;
 import cn.liora.util.MinecraftInstance;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class UIManager extends MinecraftInstance {
         register(new ComboWidget());
         register(new KeystrokeWidget());
         register(new PingWidget());
+        register(new PotionStatusWidget());
     }
 
     public Widget getWidget(Class<? extends Widget> w) {
@@ -62,6 +64,9 @@ public class UIManager extends MinecraftInstance {
 
     @EventTarget(priority = EventPriority.HIGHEST)
     private void onNano(NanoEvent event) {
+        if (mc.currentScreen != null && !(mc.currentScreen instanceof GuiChat)) {
+            return;
+        }
         for (Widget widget : widgetList) {
             if (Client.instance.moduleManager.getModule(widget).enabled) {
                 widget.updatePos();
@@ -72,6 +77,9 @@ public class UIManager extends MinecraftInstance {
 
     @EventTarget
     private void onShader(ShaderEvent event) {
+        if (mc.currentScreen != null && !(mc.currentScreen instanceof GuiChat)) {
+            return;
+        }
         for (Widget widget : widgetList) {
             if (Client.instance.moduleManager.getModule(widget).enabled) {
                 widget.onShader(event);

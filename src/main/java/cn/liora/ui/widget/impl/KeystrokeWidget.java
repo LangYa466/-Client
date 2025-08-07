@@ -15,11 +15,15 @@ import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author LangYa466
+ * @date 8/7/2025
+ */
 public class KeystrokeWidget extends Widget {
     private final NumberValue fontSize = new NumberValue("Font Size", 16f, 30f, 16f, 0.5f);
     private final NumberValue size = new NumberValue("Size", 6f, 16f, 8f, 0.5f);
     private final NumberValue spacing = new NumberValue("Spacing", 2f, 8f, 4f, 0.5f);
-    private final NumberValue radius = new NumberValue("RoundedRect Radius", 2f, 10f, 4f, 0.5f);
+    private final NumberValue radius = new NumberValue("RoundedRect Radius", 2f, 10f, 0f, 0.5f);
 
     private final ColorValue background = new ColorValue("Background", new Color(0, 0, 0, 120));
     private final ColorValue pressedColor = new ColorValue("Pressed Color", new Color(255, 255, 255, 80));
@@ -56,9 +60,13 @@ public class KeystrokeWidget extends Widget {
             boxWidth = Math.max(boxWidth, w);
         }
 
-        float spaceBoxWidth = font.getStringWidth("SPACE") * fs / 15f + sz * 2;
+        // 3普通键宽度加2间距宽度
+        float spaceKeyWidth = boxWidth * 3 + gap * 2;
+
         float totalWidth = boxWidth * 3 + gap * 2;
-        if (spaceBoxWidth > totalWidth) totalWidth = spaceBoxWidth;
+        if (showSpace.getValue()) {
+            totalWidth = Math.max(totalWidth, spaceKeyWidth);
+        }
 
         int rowCount = showSpace.getValue() ? 3 : 2;
         float totalHeight = boxHeight * rowCount + gap * (rowCount - 1);
@@ -66,7 +74,7 @@ public class KeystrokeWidget extends Widget {
         float centerX = renderX + (totalWidth - (boxWidth * 3 + gap * 2)) / 2f;
         float currentY = renderY;
 
-        // 第一排 W 居中
+        // 第一排 W 居中显示
         drawKey("W", renderX + (totalWidth - boxWidth) / 2f, currentY, boxWidth, boxHeight, font, fs, sz, round);
         currentY += boxHeight + gap;
 
@@ -76,8 +84,9 @@ public class KeystrokeWidget extends Widget {
         drawKey("D", centerX + (boxWidth + gap) * 2, currentY, boxWidth, boxHeight, font, fs, sz, round);
         currentY += boxHeight + gap;
 
+        // 第三排 SPACE
         if (showSpace.getValue()) {
-            drawKey("SPACE", renderX + (totalWidth - (spaceBoxWidth * 2)) / 2f, currentY, spaceBoxWidth * 2, boxHeight, font, fs, sz, round);
+            drawKey("SPACE", centerX, currentY, spaceKeyWidth, boxHeight, font, fs, sz, round);
         }
 
         this.width = totalWidth;
