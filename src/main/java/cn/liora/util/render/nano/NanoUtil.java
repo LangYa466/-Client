@@ -87,17 +87,6 @@ public class NanoUtil extends MinecraftInstance {
         return nvgCreateImageMem(vg, 0, buffer);
     }
 
-    public static int genImageId(BufferedImage image) {
-        File cacheFile = new File(ConfigManager.cacheDir, ThreadLocalRandom.current().nextFloat() + ".png");
-        try {
-            ImageIO.write(image, "png", cacheFile);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return nvgCreateImage(vg, cacheFile.getAbsolutePath(), 0);
-    }
-
     public static int genImageId(File file) {
         return nvgCreateImage(vg, file.getAbsolutePath(), 0);
     }
